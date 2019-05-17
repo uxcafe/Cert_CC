@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Certificado</title>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta charset="utf-8" name="viewport" content="width=device-width">
+        <style>
+            :root {
+                --main-color: #000;
+                --sec-color: #ff81d8;
+                --ter-color: #da73ff;
+            }
+            @page {
+                size: 21cm 29.7cm;
+                /* margin: 30mm 45mm 30mm 45mm; */
+                /* change the margins as you want them to be. */
+            }
+            @media print{
+                @page {
+                    size: landscape
+                }
+            }
+            body{
+                margin: 0;
+            }
+            div{
+                color: var(--main-color);
+                height: 100vh;
+            }
+            .bg{
+                position: absolute;
+                top: 0;
+                height: 100%;
+                opacity: .1;
+            }
+            h1,
+            h3{
+                text-align: center;
+            }
+            h1{
+                font-size: 9vw;
+                margin-top: 0;
+                text-transform: uppercase;
+                /* font-family: serif; */
+                color: var(--ter-color);
+            }
+            h3{
+                font-size: 2.5vw;
+                margin: 0 auto;
+                margin-bottom: 30px;
+                font-weight: 100;
+                margin-top: 4vh;
+            }
+            section{
+                position: relative;
+                z-index: 1;
+                padding: 3vh 5vw;
+                border: 3px solid var(--ter-color);
+                margin: 6vh 3vw;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 300;
+                height: 100vh;
+            }
+            .name{
+                border: none;
+                background: transparent;
+                width: 100%;
+                margin: 0 auto;
+                text-align: center;
+                display: block;
+                /* margin-bottom: 30px; */
+                font-size: 7vw;
+                color: var(--main-color);
+                outline: none;
+                font-family: cursive;
+                text-transform: capitalize;
+            }
+            .logo{
+                width: 40vw;
+                display: block;
+                bottom: 11vh;
+                position: absolute;
+            }
+            input{
+                background: transparent;
+                border: 0;
+                color: var(--main-color);
+                outline: none;
+            }
+            .date{
+                text-align: right;
+                font-size: 2.5vw;
+                margin-top: 60px;
+            }
+            .date .day,
+            .date .month{
+                font-size: 3.5vw;
+                text-align: center;
+                font-weight: bold;
+            }
+            .date .day{
+                width: 5vw;
+            }
+            .date .month{
+                width: 16.5vw;
+                text-transform: capitalize;
+            }
+            .hours{
+                font-size: 3vw;
+                text-align: center;
+                width: 6vw;
+                font-weight: bold;
+            }
+            ::placeholder{
+                color: var(--main-color);
+                opacity: 0.4;
+            }
+            .signature{
+                border-bottom: 2px solid var(--main-color);
+                width: 50vw;
+                text-align: right;
+                display: block;
+                float: right;
+                margin-top: 11vh;
+            }
+            p{
+                width: 50vw;
+                clear: both;
+                text-align: center;
+                padding-top: 1vh;
+                margin: 0 0 0 auto;
+            }
+            .underline{
+                border-bottom: 2px solid var(--main-color);
+                display: block;
+            }
+            .under-name{
+                margin-top: -3.5vh;
+            }
+        </style>
+    </head>
+
+    <body>
+       
+        <div>
+            <section>
+                <h1>Certificado</h1>
+                <h3>Certificamos que</h3>
+                <input class="name" id="name" type="text" placeholder="Nome" autocomplete="off"></input>
+                <span class="underline under-name"></span>
+                <h3>Participou do <b>curso de Auto Maquiagem</b> com carga horária de <input type="text" class="hours" placeholder="nº"></input> horas, <br>ministrado pela maquiadora Carola Castanho.</h3>
+                <h4 class="date">São Paulo - SP, <input type="text" class="day" id="day" placeholder="dia" autocomplete="off"></input> de <input type="text" class="month" id="month" placeholder="mês" autocomplete="off"></input> de 2019</h4>
+                <!-- <input class="signature" type="text"></input> -->
+                <span class="signature underline"></span>
+                <p>Carola Castanho</p>
+                <img class="logo" src="logo_black.png">
+            </section>
+            <img class="bg" src="bg.jpg">
+        </div>
+        
+        <script>
+            // document.title = document.getElementById("name").value;
+
+            const input = document.getElementById('name');
+
+            input.addEventListener('keyup', function(){
+                var name = document.getElementById("name").value.replace(/ /g,'');
+                document.title = "Certificado_"+name;
+            });
+            window.addEventListener('load', myFunction, false )
+            // myFunction();
+
+            function myFunction() {
+            var name = prompt("Qual o nome da pessoa?", "");
+            var day = prompt("Qual foi o DIA do curso?", "");
+            var month = prompt("Qual foi o MÊS do curso?", "");
+            if (name == null || name == "") {
+                // txt = "User cancelled the prompt.";
+            } else {
+                // txt = "Hello " + person + "! How are you today?";
+                document.getElementById("name").value = name;
+                document.getElementById("day").value = day;
+                document.getElementById("month").value = month;
+            }
+                // document.getElementById("demo").innerHTML = txt;
+            }
+        </script>
+    </body>
+
+</html>
